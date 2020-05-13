@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>BaseContentIdentifier</key>
+	<string>com.apple.playgrounds.Answers</string>
+	<key>BaseContentVersion</key>
+	<string>3.0.2</string>
+	<key>ContentType</key>
+	<string>PlaygroundBookUserEdit</string>
+	<key>Diffs</key>
+	<dict>
+		<key>Chapters/Answers.playgroundchapter/Pages/820E08E8-1FA1-4013-98D5-22FE10A7AB41.playgroundpage/UserManifest.plist</key>
+		<string>Added</string>
+		<key>Chapters/Answers.playgroundchapter/Pages/820E08E8-1FA1-4013-98D5-22FE10A7AB41.playgroundpage/main.swift</key>
+		<string>Modified</string>
+		<key>Chapters/Answers.playgroundchapter/UserManifest.plist</key>
+		<string>Added</string>
+		<key>UserModules/MyFiles.playgroundmodule/Sources/SharedCode.swift</key>
+		<string>Modified</string>
+	</dict>
+	<key>FormatVersion</key>
+	<integer>2</integer>
+	<key>UpdatedContentVersion</key>
+	<string>3.0.2</string>
+</dict>
+</plist>

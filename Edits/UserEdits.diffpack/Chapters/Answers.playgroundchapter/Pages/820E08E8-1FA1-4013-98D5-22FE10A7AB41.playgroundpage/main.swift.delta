@@ -1,0 +1,290 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>BaseFile</key>
+	<string>Chapters/Answers.playgroundchapter/Pages/Template.playgroundpage/main.swift</string>
+	<key>Diffs</key>
+	<array>
+		<dict>
+			<key>ModifiedContent</key>
+			<string>var n = 0.0
+var n2 = 0.0
+var s = 0.0
+var s2 = 0.0
+var x = 0.0
+var m = 0.0
+var low = 0.0
+var high = 0.0
+var first = "error"
+var second =  "error"
+var result = "error"
+var z = 0.0
+show("Hello, and welcome to the StatSolve playground created for Swift Playgrounds.")
+show("What’s your name?")
+let name = ask("Name")
+show("Hi, " + name + "! I’m Arun Eswara. I created the StatSolve Playground to help with data interpretation and analysis in our data-driven world.")
+show("This program will help you select a statistical test to interpret your data, then process the data and draw a conclusion for you.")
+show("Before we begin, would you like to see an example?")
+let ex = askForChoice("Select An Option", options: ["Select An Option", "Yes", "No"])
+if (ex=="Yes")
+{
+    show("Some people believe that you can fix anything with duct tape. Investigators at the Madigan Army Medical Center tested using duct tape to remove warts. Patients with warts were randomly assigned to either the duct tape treatment or to the more traditional freezing treatment")
+    show("Those in the duct tape group wore duct tape over the wart for 6 days, then removed the tape, soaked the area in water, and used an emery board to scrape the area. The process was repeated for a maximum of two months or until the wart was gone.")
+    show("In the liquid nitrogen group, 60 of the 100 warts were successfully removed. In the duct tape group, 88 of 104 warts were successfully removed")
+    show("This test wants to determine if the data suggests that duct tape is more effective than liquid nitrogen freezing at removing warts. This is a 2-Sample Z-Test via a Z-Procedure on Proportions. While it is obvious from the data that a higher proportion of duct tape treatments were successful than liquid nitrogen treatments, this tests seeks to determine if that data can be extrapolated to all patients with warts.")
+    show("Cumulative Proportion = 0.7255")
+    show("Z = -3.9383")
+    show("P = 0.0000410")
+    show("Alpha = 0.05")
+    show("Since the P-value &lt; alpha, we reject the null hypothesis that the two proportions are equal. There is sufficient evidence to suggest that the true proportion of warts removed by duct tape is greater than the true proportion of warts removed with liquid nitrogen. This concludes the example.")
+}
+show("First, we’ll help you select the right statistical test")
+show("Will you be analyzing one data set or comparing two data sets?")
+let num = askForChoice("Select An Option", options: ["Select An Option", "One Data Set", "Two Data Sets"])
+show("Are you analyzing the mean/average in a data set or the proportion of an occurrence in a data set?") 
+let type = askForChoice("Select An Option", options: ["Select An Option", "Means", "Proportions"])
+show("Would like you to create a confidence interval or perform a hypothesis test?")
+let test = askForChoice("Select An Option", options: ["Select An Option", "Confidence Interval", "Hypothesis Test"])
+var t = "Error. Please try again."
+if(num=="One Data Set")
+{
+    
+    if (type=="Means")
+    {
+        if (test=="Confidence Interval")
+        {
+            t = "Z-Interval via a Z-Procedure on means" 
+        } else if (test=="Hypothesis Test")
+        {
+            t = "Z-Test via a Z-Procedure on means"
+        }
+    } else if (type=="Proportions")
+    {
+        if (test=="Confidence Interval")
+        {
+            t = "Z-Interval via a Z-Procedure on proportions"
+        } else if (test=="Hypothesis Test")
+        {
+            t = "Z-Test via a Z-Procedure on proportions"
+        }
+    }
+    
+} else if (num=="Two Data Sets")
+{
+    
+    if (type=="Means")
+    {
+        if (test=="Confidence Interval")
+        {
+            t = "2-Sample Z-Interval via a Z-Procedure on means"
+        } else if (test=="Hypothesis Test")
+        {
+            t = "2-Sample Z-Test via a Z-Procedure on means"
+        }
+    } else if (type=="Proportions")
+    {
+        if (test=="Confidence Interval")
+        {
+            t = "2-Sample Z-Interval via a Z-Procedure on proportions"
+        } else if (test=="Hypothesis Test")
+        {
+            t = "2-Sample Z-Test via a Z-Procedure on proportions"
+        }
+    }
+    
+}
+show("Congratulations, " + name + "! You have selected a " + t + ".")
+show("Note: This procedure assumes a confidence level of 95% and a normal distribution and independence. For tests, an alpha value of 0.025 is used in accordance with the 95% CI.")
+if (t=="Z-Interval via a Z-Procedure on means")
+{
+    show("What value are you trying to interpret? For example, the ‘number of students’ or ‘affected patients’")
+    first = ask("Value")
+    show ("Enter the sample mean")
+    x = askForDecimal("Sample Mean")
+    show("Enter the sample size")
+    n = askForDecimal("Sample Size")
+    show("Enter the standard deviation of the sample")
+    s = askForDecimal("Standard Deviation")
+    low = x - 1.96 * s / n.squareRoot()
+    high = x + 1.96 * s / n.squareRoot()
+    show("We are 95% confident that the true mean of the " + first + "is between")
+    show (low)
+    show("and")
+    show(high)
+    
+}
+if (t=="Z-Test via a Z-Procedure on means")
+{
+    show("This test assumes a two-tailed test, testing if the two true means are different")
+    show("What value are you trying to interpret? For example, the ‘number of students’ or ‘affected patients’")
+    first = ask("Value")
+    show("Enter the mean of the sample")
+    x = askForDecimal("Mean")
+    show("Enter the value you are testing against")
+    m = askForDecimal("Value")
+    show("Enter the sample size")
+    n = askForDecimal("Sample Size")
+    show("Enter the standard deviation of the sample")
+    s = askForDecimal("Standard Deviation")
+    z = (x-m)/(s/n.squareRoot())
+    if (z &gt; -1.96 &amp;&amp; z &lt; 1.96)
+    {
+        show("Since the P-value &gt; alpha, we fail to reject the null hypothesis that the values are equal. Therefore, there is not sufficient evidence to suggest that the tested mean and the sample mean of " + first + " are different.")
+    } else {
+        show("Since the P-value &lt; alpha, we reject the null hypothesis that the values are equal. Therefore, there is sufficient evidence to suggest that the tested mean and the sample mean of " + first + " are different.")
+    }
+}
+if (t=="Z-Interval via a Z-Procedure on proportions")
+{
+    show("What value are you trying to interpret? For example, the ‘number of students’ or ‘affected patients’")
+    first = ask("Value")
+    show ("Enter the sample proportion")
+    x = askForDecimal("Sample Proportion")
+    show("Enter the sample size")
+    n = askForDecimal("Sample Size")
+    low = x - 1.96 * (x * (1 - x) / n).squareRoot()
+    high = x + 1.96 * (x * (1 - x) / n).squareRoot()
+    show("We are 95% confident that the true proportion of the " + first + "is between")
+    show (low)
+    show("and")
+    show(high)
+}
+if (t=="Z-Test via a Z-Procedure on proportions")
+{
+    show("This test assumes a two-tailed test, testing if the two true proportions are different")
+    show("What value are you trying to interpret? For example, the ‘number of students’ or ‘affected patients’")
+    first = ask("Value")
+    show("Enter the proportion of the sample")
+    x = askForDecimal("Mean")
+    show("Enter the proportion you are testing against")
+    m = askForDecimal("Value")
+    show("Enter the sample size")
+    n = askForDecimal("Sample Size")
+    z = (x-m)/(x * (1 - x) / n).squareRoot()
+    if (z &gt; -1.96 &amp;&amp; z &lt; 1.96)
+    {
+        show("Since the P-value &gt; alpha, we fail to reject the null hypothesis that the proportions are equal. Therefore, there is not sufficient evidence to suggest that the tested proportion and the sample proportion of " + first + " are different.")
+    } else {
+        show("Since the P-value &lt; alpha, we reject the null hypothesis that the proportions are equal. Therefore, there is sufficient evidence to suggest that the tested proportion and the sample proportion of " + first + " are different.")
+    }
+}
+
+if (t=="2-Sample Z-Interval via a Z-Procedure on means")
+{
+    show("What is the first value you are trying to interpret? For example, the ‘number of students’ or ‘affected patients’")
+    first = ask("Value")
+    show("What is the second value you are trying to interpret? For example, the ‘number of students’ or ‘affected patients’")
+    second = ask("Value")
+    show ("Enter the sample mean of the first value")
+    x = askForDecimal("Sample Mean")
+    show ("Enter the sample mean of the second value")
+    m = askForDecimal("Sample Mean")
+    show("Enter the sample size of the first value")
+    n = askForDecimal("Sample Size")
+    show("Enter the sample size of the second value")
+    n2 = askForDecimal("Sample Size")
+    show("Enter the standard deviation of the first population")
+    s = askForDecimal("Standard Deviation")
+    show("Enter the standard deviation of the second population")
+    s2 = askForDecimal("Standard Deviation")
+    low = x - m - 1.96 * (s * s / n + s2 * s2 / n2).squareRoot()
+    high = x - m + 1.96 * (s * s / n + s2 * s2 / n2).squareRoot()
+    show("We are 95% confident that the true difference in means of the " + first + " and " + second + " is between")
+    show (low)
+    show("and")
+    show(high)
+}
+
+if (t=="2-Sample Z-Test via a Z-Procedure on means")
+{
+    show("This test assumes a two-tailed test, testing if the two true means are different")
+    
+    show("What is the first value you are trying to interpret? For example, the ‘number of students’ or ‘affected patients’")
+    first = ask("Value")
+    show("What is the second value you are trying to interpret? For example, the ‘number of students’ or ‘affected patients’")
+    second = ask("Value")
+    show ("Enter the sample mean of the first value")
+    x = askForDecimal("Sample Mean")
+    show ("Enter the sample mean of the second value")
+    m = askForDecimal("Sample Mean")
+    show("Enter the sample size of the first value")
+    n = askForDecimal("Sample Size")
+    show("Enter the sample size of the second value")
+    n2 = askForDecimal("Sample Size")
+    show("Enter the standard deviation of the first population")
+    s = askForDecimal("Standard Deviation")
+    show("Enter the standard deviation of the second population")
+    s2 = askForDecimal("Standard Deviation")
+    low = x - m - 1.96 * (s * s / n + s2 * s2 / n2).squareRoot()
+    high = x - m + 1.96 * (s * s / n + s2 * s2 / n2).squareRoot()
+    if (0 &gt; low &amp;&amp; 0 &lt; high)
+    {
+        show("Since the P-value &gt; alpha, we fail to reject the null hypothesis that the values are equal. Therefore, there is not sufficient evidence to suggest that the population mean of " + first + " and the population mean of " + second + " are different.")
+    } else {
+        show("Since the P-value &lt; alpha, we reject the null hypothesis that the values are equal. Therefore, there is sufficient evidence to suggest that the population mean of " + first + " and the population mean of " + second + " are different.")
+    }
+}
+
+if (t=="2-Sample Z-Interval via a Z-Procedure on proportions")
+{
+    show("What is the first value you are trying to interpret? For example, the ‘number of students’ or ‘affected patients’")
+    first = ask("Value")
+    show("What is the second value you are trying to interpret? For example, the ‘number of students’ or ‘affected patients’")
+    second = ask("Value")
+    show ("Enter the sample proportion of the first value")
+    x = askForDecimal("Sample Mean")
+    show ("Enter the sample proportion of the second value")
+    m = askForDecimal("Sample Mean")
+    show("Enter the sample size of the first value")
+    n = askForDecimal("Sample Size")
+    show("Enter the sample size of the second value")
+    n2 = askForDecimal("Sample Size")
+    low = x - m - 1.96 * (x  * (1-x) / n + m  * (1-m) / n2).squareRoot()
+    high = x - m + 1.96 * (x  * (1-x) / n + m  * (1-m) / n2).squareRoot()
+    show("We are 95% confident that the true difference in proportions of the " + first + " and " + second + " is between")
+    show (low)
+    show("and")
+    show(high)
+}
+
+if (t=="2-Sample Z-Test via a Z-Procedure on proportions")
+{
+    show("This test assumes a two-tailed test, testing if the two true proportions are different")
+    
+    show("What is the first value you are trying to interpret? For example, the ‘number of students’ or ‘affected patients’")
+    first = ask("Value")
+    show("What is the second value you are trying to interpret? For example, the ‘number of students’ or ‘affected patients’")
+    second = ask("Value")
+    show ("Enter the sample proportion of the first value")
+    x = askForDecimal("Sample Mean")
+    show ("Enter the sample proportion of the second value")
+    m = askForDecimal("Sample Mean")
+    show("Enter the sample size of the first value")
+    n = askForDecimal("Sample Size")
+    show("Enter the sample size of the second value")
+    n2 = askForDecimal("Sample Size")
+    low = x - m - 1.96 * (x  * (1-x) / n + m  * (1-m) / n2).squareRoot()
+    high = x - m + 1.96 * (x  * (1-x) / n + m  * (1-m) / n2).squareRoot()
+    if (0 &gt; low &amp;&amp; 0 &lt; high)
+    {
+        show("Since the P-value &gt; alpha, we fail to reject the null hypothesis that the proportions are equal. Therefore, there is not sufficient evidence to suggest that the population proportion of " + first + " and the population proportion of " + second + " are different.")
+    } else {
+        show("Since the P-value &lt; alpha, we reject the null hypothesis that the proportions are equal. Therefore, there is sufficient evidence to suggest that the population proportion of " + first + " and the population proportion of " + second + " are different.")
+    }
+}
+
+show("Thank you so much for trying out this tool, " + name + ". In a world filled with data and statistics, creating informed decisions and interpreting statistics will only continue to become more important. Until next time!")
+</string>
+			<key>ModifiedRange</key>
+			<string>{229, 13828}</string>
+			<key>OriginalContent</key>
+			<string></string>
+			<key>OriginalRange</key>
+			<string>{229, 0}</string>
+		</dict>
+	</array>
+	<key>FormatVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>
