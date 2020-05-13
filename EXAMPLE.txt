@@ -1,0 +1,13 @@
+While there is an example at the beginning of the text, here is another example problem that you can run yourself to test the accuracy of the system.
+
+“The article ‘How Well Are U.S. Colleges Run?’ (USA Today, February 17, 2010) describes a survey of 1031 adult Americans. The survey was carried out by the National Center for Public Policy and the sample was selected in a way that makes it reasonable to regard the sample as representative of adult Americans. Of those surveyed, 567 indicated that they believe a college education is essential for success. 
+
+What is a 95% confidence interval for the population proportion of adult Americans who believe that a college education is essential for success?”
+
+To select the right statistical test, answer the following for the questionnaire:
+One Data Set -> Proportions -> Confidence Interval
+Value: adult Americans who believe college education is essential for success
+Sample Proportion: 0.55
+Sample Size: 1031
+
+The program will output the correct values, which are 0.5196 to 0.5803. Therefore, we are 95% confident that the true proportion of adult Americans who believe college education is essential for success is between 0.5196 and 0.5804.
